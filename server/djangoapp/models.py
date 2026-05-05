@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
 
 # Car Make model
 class CarMake(models.Model):
@@ -17,7 +16,7 @@ class CarModel(models.Model):
     # Many-To-One relationship to Car Make model
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    
+
     # Choices for Type
     CAR_TYPES = [
         ('SEDAN', 'Sedan'),
@@ -25,7 +24,7 @@ class CarModel(models.Model):
         ('WAGON', 'Wagon'),
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
-    
+
     # Year field with min and max validators
     year = models.IntegerField(
         default=2023,
